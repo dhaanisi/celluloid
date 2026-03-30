@@ -43,6 +43,9 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --font-weight-bold: 700;
+
+  --cyan: oklch(0.911 0.196 196.77);
+  --electric: oklch(0.941 0.106 198.81);
 }
 
 .dark {
@@ -140,6 +143,9 @@
       height: 0;
     }
   }
+
+  --color-cyan: var(--cyan);
+  --color-electric: var(--electric);
 }
 
 /* This layer is added by shadcn/ui */
