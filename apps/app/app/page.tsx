@@ -42,7 +42,6 @@ const LATEST_LOGS = [
 export default function LandingPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
-
       {/* ── GRID OVERLAY ── */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -56,32 +55,32 @@ export default function LandingPage() {
       />
 
       {/* ── AMBIENT GLOW ── */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-cyan/5 blur-[120px]" />
+      <div className="-top-40 -translate-x-1/2 pointer-events-none absolute left-1/2 h-[600px] w-[800px] rounded-full bg-cyan/5 blur-[120px]" />
 
       {/* ── NAV BAR ── */}
-      <nav className="relative z-10 flex items-center justify-between border-b border-border px-8 py-4 md:px-16">
+      <nav className="relative z-10 flex items-center justify-between border-border border-b px-8 py-4 md:px-16">
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center border border-cyan/40 text-xs text-cyan">
+          <div className="flex h-8 w-8 items-center justify-center border border-cyan/40 text-cyan text-xs">
             ▶
           </div>
-          <span className="text-sm font-bold tracking-[0.3em] text-foreground">
+          <span className="font-bold text-foreground text-sm tracking-[0.3em]">
             CELLULOID
           </span>
         </div>
 
         <div className="flex items-center gap-6">
-          <span className="hidden text-xs text-muted-foreground md:inline">
+          <span className="hidden text-muted-foreground text-xs md:inline">
             // NETWORK v0.1
           </span>
           <Link
+            className="border border-border px-4 py-2 text-muted-foreground text-xs tracking-widest transition-all hover:border-cyan/50 hover:text-cyan"
             href="/sign-in"
-            className="border border-border px-4 py-2 text-xs tracking-widest text-muted-foreground transition-all hover:border-cyan/50 hover:text-cyan"
           >
             SIGN IN
           </Link>
           <Link
+            className="border border-cyan/60 bg-cyan/10 px-4 py-2 text-cyan text-xs tracking-widest transition-all hover:bg-cyan/20"
             href="/sign-up"
-            className="border border-cyan/60 bg-cyan/10 px-4 py-2 text-xs tracking-widest text-cyan transition-all hover:bg-cyan/20"
           >
             JOIN
           </Link>
@@ -89,18 +88,17 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO SECTION ── */}
-      <section className="relative z-10 px-8 pb-16 pt-20 md:px-16 md:pt-28">
-        <div className="grid gap-16 lg:grid-cols-5">
-
-          {/* LEFT — HEADLINE */}
-          <div className="space-y-8 lg:col-span-3">
+      <section className="relative z-10 px-8 pt-20 pb-16 md:px-16 md:pt-28">
+        <div className="flex flex-col items-center text-center space-y-12">
+          {/* HEADLINE */}
+          <div className="max-w-4xl space-y-6">
             {/* Terminal prompt accent */}
-            <div className="flex items-center gap-2 text-xs text-cyan">
+            <div className="flex items-center justify-center gap-2 text-cyan text-xs">
               <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-cyan" />
               <span className="tracking-[0.2em]">LIVE // CINEMATIC NETWORK</span>
             </div>
 
-            <h1 className="text-5xl font-bold leading-[1.08] tracking-tight md:text-7xl lg:text-8xl">
+            <h1 className="text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
               <span className="text-foreground">WHERE</span>
               <br />
               <span className="text-foreground">FILM LOVERS</span>
@@ -110,12 +108,12 @@ export default function LandingPage() {
               </span>
             </h1>
 
-            <p className="max-w-lg text-sm leading-relaxed text-muted-foreground md:text-base">
+            <p className="mx-auto max-w-2xl text-muted-foreground text-sm leading-relaxed md:text-base">
               A dark-mode cinematic network to discover, review, and archive
               films. Real-time rooms. Honest takes. No algorithm — just taste.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/sign-up"
                 className="group relative overflow-hidden border border-cyan bg-cyan/10 px-8 py-3.5 text-sm font-medium tracking-[0.2em] text-cyan transition-all hover:bg-cyan/20 hover:shadow-[0_0_30px_rgba(0,255,255,0.1)]"
@@ -131,7 +129,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stats row */}
-            <div className="flex gap-8 border-t border-border pt-6">
+            <div className="flex justify-center gap-12 border-t border-border pt-8">
               {[
                 { label: "ACTIVE USERS", value: "2.4K" },
                 { label: "FILMS LOGGED", value: "18K" },
@@ -144,76 +142,77 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* RIGHT — SYSTEM PANELS */}
-          <div className="space-y-4 lg:col-span-2">
-
-            {/* ACTIVE ROOMS */}
-            <div className="border border-border bg-card/50 p-5">
-              <div className="mb-4 flex items-center justify-between">
-                <p className="text-[10px] tracking-[0.2em] text-muted-foreground">
-                  // ACTIVE ROOMS
-                </p>
-                <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-              </div>
-              <div className="space-y-2">
-                {ACTIVE_ROOMS.map((room) => (
-                  <div
-                    key={room.name}
-                    className="flex items-center justify-between border border-border/50 px-3 py-2 transition-colors hover:border-cyan/30 hover:bg-cyan/5"
-                  >
-                    <span className="text-xs text-foreground">#{room.name}</span>
-                    <span className="text-[10px] text-muted-foreground">
-                      {room.users} online
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* TRENDING */}
-            <div className="border border-border bg-card/50 p-5">
-              <p className="mb-4 text-[10px] tracking-[0.2em] text-muted-foreground">
-                // TRENDING NOW
+      {/* ── SYSTEM PANELS ── */}
+      <section className="relative z-10 px-8 pb-20 md:px-16">
+        <div className="grid gap-4 md:grid-cols-3">
+          {/* ACTIVE ROOMS */}
+          <div className="border border-border bg-card/50 p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-[10px] tracking-[0.2em] text-muted-foreground">
+                // ACTIVE ROOMS
               </p>
-              <div className="space-y-2">
-                {TRENDING_FILMS.map((film, i) => (
-                  <div
-                    key={film.title}
-                    className="flex items-center gap-3 border border-border/50 px-3 py-2 transition-colors hover:border-cyan/30 hover:bg-cyan/5"
-                  >
-                    <span className="text-[10px] text-cyan/60">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex-1">
-                      <p className="text-xs font-medium text-foreground">{film.title}</p>
-                      <p className="text-[10px] text-muted-foreground">
-                        {film.year} · {film.genre}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
             </div>
+            <div className="space-y-2">
+              {ACTIVE_ROOMS.map((room) => (
+                <div
+                  key={room.name}
+                  className="flex items-center justify-between border border-border/50 px-3 py-2 transition-colors hover:border-cyan/30 hover:bg-cyan/5"
+                >
+                  <span className="text-xs text-foreground">#{room.name}</span>
+                  <span className="text-[10px] text-muted-foreground">
+                    {room.users} online
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            {/* SYSTEM STATUS */}
-            <div className="border border-border bg-card/50 p-5">
-              <p className="mb-3 text-[10px] tracking-[0.2em] text-muted-foreground">
-                // SYSTEM STATUS
-              </p>
-              <div className="space-y-1.5 text-xs">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">API</span>
-                  <span className="text-success">OPERATIONAL</span>
+          {/* TRENDING */}
+          <div className="border border-border bg-card/50 p-5">
+            <p className="mb-4 text-[10px] tracking-[0.2em] text-muted-foreground">
+              // TRENDING NOW
+            </p>
+            <div className="space-y-2">
+              {TRENDING_FILMS.map((film, i) => (
+                <div
+                  key={film.title}
+                  className="flex items-center gap-3 border border-border/50 px-3 py-2 transition-colors hover:border-cyan/30 hover:bg-cyan/5"
+                >
+                  <span className="text-[10px] text-cyan/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-xs font-medium text-foreground">{film.title}</p>
+                    <p className="text-[10px] text-muted-foreground">
+                      {film.year} · {film.genre}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">TMDB SYNC</span>
-                  <span className="text-success">CONNECTED</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">LATENCY</span>
-                  <span className="text-cyan">12ms</span>
-                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* SYSTEM STATUS */}
+          <div className="border border-border bg-card/50 p-5">
+            <p className="mb-3 text-[10px] tracking-[0.2em] text-muted-foreground">
+              // SYSTEM STATUS
+            </p>
+            <div className="space-y-1.5 text-xs">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">API</span>
+                <span className="text-success">OPERATIONAL</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">TMDB SYNC</span>
+                <span className="text-success">CONNECTED</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">LATENCY</span>
+                <span className="text-cyan">12ms</span>
               </div>
             </div>
           </div>
@@ -221,39 +220,46 @@ export default function LandingPage() {
       </section>
 
       {/* ── DIVIDER ── */}
-      <div className="relative z-10 mx-8 border-t border-border md:mx-16">
-        <span className="absolute -top-2.5 left-8 bg-background px-3 text-[10px] tracking-[0.2em] text-muted-foreground">
+      <div className="relative z-10 mx-8 border-border border-t md:mx-16">
+        <span className="-top-2.5 absolute left-8 bg-background px-3 text-[10px] text-muted-foreground tracking-[0.2em]">
           LATEST TRANSMISSIONS
         </span>
       </div>
 
       {/* ── SAMPLE FEED ── */}
-      <section className="relative z-10 px-8 pb-24 pt-12 md:px-16">
+      <section className="relative z-10 px-8 pt-12 pb-24 md:px-16">
         <div className="grid gap-4 md:grid-cols-3">
           {LATEST_LOGS.map((log, i) => (
             <div
-              key={i}
               className="group border border-border bg-card/30 p-6 transition-all hover:border-cyan/30 hover:bg-card/60"
+              key={i}
             >
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-xs font-medium text-cyan">{log.user}</span>
-                <span className="text-[10px] text-muted-foreground">{log.timestamp}</span>
+                <span className="font-medium text-cyan text-xs">
+                  {log.user}
+                </span>
+                <span className="text-[10px] text-muted-foreground">
+                  {log.timestamp}
+                </span>
               </div>
 
-              <p className="mb-2 text-xs text-muted-foreground">
-                reviewing{" "}
-                <span className="text-foreground">{log.film}</span>
+              <p className="mb-2 text-muted-foreground text-xs">
+                reviewing <span className="text-foreground">{log.film}</span>
               </p>
 
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-foreground/80">
+              <p className="mb-4 text-muted-foreground text-sm leading-relaxed transition-colors group-hover:text-foreground/80">
                 {log.text}
               </p>
 
               <div className="flex items-center gap-1">
                 {Array.from({ length: 5 }).map((_, si) => (
                   <span
+                    className={
+                      si < log.rating
+                        ? "text-cyan text-xs"
+                        : "text-border text-xs"
+                    }
                     key={si}
-                    className={si < log.rating ? "text-cyan text-xs" : "text-border text-xs"}
                   >
                     ★
                   </span>
@@ -265,21 +271,29 @@ export default function LandingPage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="relative z-10 border-t border-border px-8 py-6 md:px-16">
+      <footer className="relative z-10 border-border border-t px-8 py-6 md:px-16">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center gap-3">
             <div className="flex h-6 w-6 items-center justify-center border border-cyan/30 text-[8px] text-cyan">
               ▶
             </div>
-            <span className="text-xs tracking-[0.2em] text-muted-foreground">
+            <span className="text-muted-foreground text-xs tracking-[0.2em]">
               CELLULOID © 2026
             </span>
           </div>
-          <div className="flex gap-6 text-xs text-muted-foreground">
-            <span className="cursor-pointer transition-colors hover:text-cyan">ABOUT</span>
-            <span className="cursor-pointer transition-colors hover:text-cyan">PRIVACY</span>
-            <span className="cursor-pointer transition-colors hover:text-cyan">TERMS</span>
-            <span className="cursor-pointer transition-colors hover:text-cyan">GITHUB</span>
+          <div className="flex gap-6 text-muted-foreground text-xs">
+            <span className="cursor-pointer transition-colors hover:text-cyan">
+              ABOUT
+            </span>
+            <span className="cursor-pointer transition-colors hover:text-cyan">
+              PRIVACY
+            </span>
+            <span className="cursor-pointer transition-colors hover:text-cyan">
+              TERMS
+            </span>
+            <span className="cursor-pointer transition-colors hover:text-cyan">
+              GITHUB
+            </span>
           </div>
           <p className="text-[10px] text-muted-foreground">
             // BUILT FOR CINEMA LOVERS
