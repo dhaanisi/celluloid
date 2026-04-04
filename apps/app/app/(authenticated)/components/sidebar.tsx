@@ -38,7 +38,6 @@ import {
   Globe,
   LifeBuoyIcon,
   List,
-  Search as SearchIcon,
   SendIcon,
   Settings2Icon,
   Tv,
@@ -181,17 +180,14 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
               sidebar.open ? "" : "-mx-1"
             )}
           >
-            <OrganizationSwitcher
-              afterSelectOrganizationUrl="/"
-              hidePersonal
-            />
+            <OrganizationSwitcher afterSelectOrganizationUrl="/" hidePersonal />
           </div>
         </div>
         <Search />
         <SidebarContent className="font-mono">
           {/* SURVEILLANCE */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[10px] tracking-[0.2em] text-cyan/40">
+            <SidebarGroupLabel className="text-[10px] text-cyan/40 tracking-[0.2em]">
               // SURVEILLANCE
             </SidebarGroupLabel>
             <SidebarMenu>
@@ -213,7 +209,7 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
 
           {/* THEATERS */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[10px] tracking-[0.2em] text-cyan/40">
+            <SidebarGroupLabel className="text-[10px] text-cyan/40 tracking-[0.2em]">
               // THEATERS
             </SidebarGroupLabel>
             <SidebarMenu>
@@ -267,7 +263,7 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
 
           {/* ARCHIVE */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[10px] tracking-[0.2em] text-cyan/40">
+            <SidebarGroupLabel className="text-[10px] text-cyan/40 tracking-[0.2em]">
               // ARCHIVE
             </SidebarGroupLabel>
             <SidebarMenu>
@@ -289,7 +285,7 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
 
           {/* CITIZEN */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-[10px] tracking-[0.2em] text-cyan/40">
+            <SidebarGroupLabel className="text-[10px] text-cyan/40 tracking-[0.2em]">
               // CITIZEN
             </SidebarGroupLabel>
             <SidebarMenu>
@@ -309,7 +305,7 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
             </SidebarMenu>
           </SidebarGroup>
 
-          <div className="mt-auto h-px w-full opacity-50 bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="mt-auto h-px w-full bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
 
           {/* SYSTEM */}
           <SidebarGroup>
@@ -318,7 +314,7 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
-                      className="flex items-center gap-2 text-[10px] text-muted-foreground uppercase tracking-widest hover:text-cyan transition-colors"
+                      className="flex items-center gap-2 text-[10px] text-muted-foreground uppercase tracking-widest transition-colors hover:text-cyan"
                       href={item.url}
                     >
                       <item.icon className="h-3.5 w-3.5" />
@@ -348,7 +344,7 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
                 <ModeToggle />
                 <Button
                   asChild
-                  className="shrink-0 text-muted-foreground hover:text-cyan transition-colors"
+                  className="shrink-0 text-muted-foreground transition-colors hover:text-cyan"
                   size="icon"
                   variant="ghost"
                 >
